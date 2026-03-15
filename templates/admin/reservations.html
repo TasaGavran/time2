@@ -1,0 +1,50 @@
+{% extends "admin/base_admin.html" %}
+{% block admin_title %}Rezervacije{% endblock %}
+
+{% block admin_content %}
+<div class="admin-header"><h1>Rezervacije</h1></div>
+
+<form class="filter-bar" method="GET" action="{{ url_for('admin_reservations') }}">
+    <select name="status">
+        <option value="">Svi statusi</option>
+        <option value="nova" {% if status_filter == 'nova' %}selected{% endif %}>Nova</option>
+        <option value="potvrđena" {% if status_filter == 'potvrđena' %}selected{% endif %}>Potvrđena</option>
+        <option value="otkazana" {% if status_filter == 'otkazana' %}selected{% endif %}>Otkazana</option>
+    </select>
+    <input type="date" name="date" value="{{ date_filter }}">
+    <button type="submit" class="btn btn-sm btn-gold">Filtriraj</button>
+    {% if status_filter or date_filter %}<a href="{{ url_for('admin_reservations') }}" class="btn btn-sm btn-dark">Poništi</a>{% endif %}
+</form>
+
+<div class="admin-table-card">
+    <table class="admin-table">
+        <thead><tr><th>#</th><th>Gost</th><th>Telefon</th><th>Email</th><th>Datum</th><th>Vreme</th><th>Gostiju</th><th>Napomena</th><th>Status</th><th style="width:180px">Akcije</th></tr></thead>
+        <tbody>
+            {% for res in reservations %}
+            <tr>
+                <td>{{ res.id }}</td>
+                <td><strong>{{ res.guest_name }}</strong></td>
+                <td>{{ res.phone }}</td>
+                <td>{{ res.email or '—' }}</td>
+                <td>{{ res.date }}</td>
+                <td>{{ res.time }}</td>
+                <td>{{ res.guests }}</td>
+                <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ res.note or '—' }}</td>
+                <td>
+                    {% if res.status == 'nova' %}<span class="badge badge-nova">Nova</span>
+                    {% elif res.status == 'potvrđena' %}<span class="badge badge-potvrdjena">Potvrđena</span>
+                    {% else %}<span class="badge badge-otkazana">Otkazana</span>{% endif %}
+                </td>
+                <td>
+                    {% if res.status != 'potvrđena' %}<button class="btn btn-sm btn-success" onclick="updateReservation({{ res.id }},'potvrđena')" title="Potvrdi"><i class="fas fa-check"></i></button>{% endif %}
+                    {% if res.status != 'otkazana' %}<button class="btn btn-sm btn-warning" onclick="updateReservation({{ res.id }},'otkazana')" title="Otkaži"><i class="fas fa-times"></i></button>{% endif %}
+                    <button class="btn btn-sm btn-danger" onclick="deleteReservation({{ res.id }})" title="Obriši"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="10" style="text-align:center;color:var(--text-3);padding:60px">{% if status_filter or date_filter %}Nema rezultata za filter.{% else %}Nema rezervacija.{% endif %}</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

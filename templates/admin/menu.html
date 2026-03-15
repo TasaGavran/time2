@@ -1,0 +1,66 @@
+{% extends "admin/base_admin.html" %}
+{% block admin_title %}Meni{% endblock %}
+
+{% block admin_content %}
+<div class="admin-header">
+    <h1>Upravljanje menijem</h1>
+    <button class="btn btn-sm btn-gold" onclick="addCategory()"><i class="fas fa-plus"></i>&nbsp; Nova kategorija</button>
+</div>
+
+{% for cat in categories %}
+<div class="admin-table-card" style="margin-bottom:20px">
+    <div class="admin-category-header">
+        <h3><i class="fas fa-folder" style="color:var(--gold);margin-right:8px"></i>{{ cat.name }}</h3>
+        <div style="display:flex;gap:8px">
+            <button class="btn btn-sm btn-gold" onclick="openAddMenuItem({{ cat.id }})"><i class="fas fa-plus"></i>&nbsp; Dodaj</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteCategory({{ cat.id }})"><i class="fas fa-trash"></i></button>
+        </div>
+    </div>
+    <table class="admin-table">
+        <thead><tr><th>Naziv</th><th>Opis</th><th>Cena</th><th>Dostupno</th><th>Red.</th><th style="width:110px">Akcije</th></tr></thead>
+        <tbody>
+            {% for item in cat.items %}
+            <tr>
+                <td><strong>{{ item.name }}</strong></td>
+                <td style="color:var(--text-3);font-size:.85rem">{{ item.description }}</td>
+                <td>{{ item.price|int }}</td>
+                <td>{% if item.available %}<span class="badge badge-potvrdjena">Da</span>{% else %}<span class="badge badge-otkazana">Ne</span>{% endif %}</td>
+                <td>{{ item.sort_order }}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning" onclick="editMenuItem({{ item.id }},{{ cat.id }},'{{ item.name|e }}','{{ item.description|e }}',{{ item.price }},{{ item.available|lower }},{{ item.sort_order }})"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteMenuItem({{ item.id }})"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="6" style="text-align:center;color:var(--text-3);padding:24px">Nema stavki.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="admin-table-card" style="padding:60px;text-align:center"><p style="color:var(--text-3)">Nema kategorija.</p></div>
+{% endfor %}
+
+<div class="modal-overlay" id="menu-modal">
+    <div class="modal">
+        <h3>Dodaj stavku</h3>
+        <form id="menu-item-form" data-item-id="">
+            <input type="hidden" name="category_id" value="">
+            <div class="fg"><label>Naziv</label><input type="text" name="name" class="fc" required></div>
+            <div class="fg"><label>Opis</label><input type="text" name="description" class="fc"></div>
+            <div class="fg-row">
+                <div class="fg"><label>Cena (RSD)</label><input type="number" name="price" class="fc" step="10" required></div>
+                <div class="fg"><label>Redosled</label><input type="number" name="sort_order" class="fc" value="0"></div>
+            </div>
+            <div class="fg" style="display:flex;align-items:center;gap:12px">
+                <label class="toggle" style="margin:0"><input type="checkbox" name="available" checked><span class="toggle-slider"></span></label>
+                <span style="font-weight:500">Dostupno</span>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-sm btn-dark" onclick="closeModal('menu-modal')">Otkaži</button>
+                <button type="button" class="btn btn-sm btn-gold" onclick="saveMenuItem()">Sačuvaj</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

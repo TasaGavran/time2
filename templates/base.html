@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Time Caffe{% endblock %}</title>
+    <meta name="description" content="Time Caffe Jagodina">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+
+{% block nav %}
+<nav class="nav">
+    <div class="container">
+        <a href="{{ url_for('index') }}" class="nav-brand">Time <i>Caffe</i></a>
+        <ul class="nav-center">
+            <li><a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}active{% endif %}" data-sr="Po&#x10D;etna" data-en="Home">Po&#x10D;etna</a></li>
+            <li><a href="{{ url_for('menu') }}" class="{% if request.endpoint == 'menu' %}active{% endif %}" data-sr="Meni" data-en="Menu">Meni</a></li>
+            <li><a href="{{ url_for('reservation') }}" class="{% if request.endpoint == 'reservation' %}active{% endif %}" data-sr="Rezervacija" data-en="Reservation">Rezervacija</a></li>
+            <li><a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}active{% endif %}" data-sr="O nama" data-en="About">O nama</a></li>
+            <li><a href="{{ url_for('location') }}" class="{% if request.endpoint == 'location' %}active{% endif %}" data-sr="Lokacija" data-en="Location">Lokacija</a></li>
+            <li><a href="{{ url_for('contact') }}" class="{% if request.endpoint == 'contact' %}active{% endif %}" data-sr="Kontakt" data-en="Contact">Kontakt</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="lang-toggle">
+                <button data-lang="sr" class="active">SR</button>
+                <button data-lang="en">EN</button>
+            </div>
+            <a href="{{ url_for('reservation') }}" class="nav-cta" data-sr="Rezervi&#x161;ite" data-en="Reserve">Rezervi&#x161;ite</a>
+        </div>
+        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<div class="mobile-menu">
+    <a href="{{ url_for('index') }}" data-sr="Po&#x10D;etna" data-en="Home">Po&#x10D;etna</a>
+    <a href="{{ url_for('menu') }}" data-sr="Meni" data-en="Menu">Meni</a>
+    <a href="{{ url_for('reservation') }}" data-sr="Rezervacija" data-en="Reservation">Rezervacija</a>
+    <a href="{{ url_for('about') }}" data-sr="O nama" data-en="About">O nama</a>
+    <a href="{{ url_for('location') }}" data-sr="Lokacija" data-en="Location">Lokacija</a>
+    <a href="{{ url_for('contact') }}" data-sr="Kontakt" data-en="Contact">Kontakt</a>
+    <div class="lang-toggle" style="margin-top:20px">
+        <button data-lang="sr" class="active">SR</button>
+        <button data-lang="en">EN</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}{% endblock %}
+
+{% block footer %}
+<footer class="ft">
+    <div class="container">
+        <div class="ft-grid">
+            <div>
+                <h4 style="font-family:var(--heading);font-size:1.4rem">Time <span style="color:var(--gold);font-style:italic;font-weight:500">Caffe</span></h4>
+                <p style="margin-top:10px" data-sr="Va&#x161;e omiljeno mesto za kafu i dru&#x17E;enje u Jagodini." data-en="Your favorite spot for coffee and gathering in Jagodina.">Va&#x161;e omiljeno mesto za kafu i dru&#x17E;enje u Jagodini.</p>
+                <div class="ft-socials">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 data-sr="Linkovi" data-en="Links">Linkovi</h4>
+                <ul class="ft-links">
+                    <li><a href="{{ url_for('index') }}" data-sr="Po&#x10D;etna" data-en="Home">Po&#x10D;etna</a></li>
+                    <li><a href="{{ url_for('menu') }}" data-sr="Meni" data-en="Menu">Meni</a></li>
+                    <li><a href="{{ url_for('reservation') }}" data-sr="Rezervacija" data-en="Reservation">Rezervacija</a></li>
+                    <li><a href="{{ url_for('about') }}" data-sr="O nama" data-en="About">O nama</a></li>
+                    <li><a href="{{ url_for('contact') }}" data-sr="Kontakt" data-en="Contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 data-sr="Radno vreme" data-en="Working Hours">Radno vreme</h4>
+                <p data-sr="Ponedeljak &#x2013; &#x10C;etvrtak" data-en="Monday &#x2013; Thursday">Ponedeljak &#x2013; &#x10C;etvrtak</p>
+                <p><strong>08:00 &#x2013; 23:00</strong></p>
+                <p style="margin-top:8px" data-sr="Petak &#x2013; Subota" data-en="Friday &#x2013; Saturday">Petak &#x2013; Subota</p>
+                <p><strong>08:00 &#x2013; 01:00</strong></p>
+                <p style="margin-top:8px" data-sr="Nedelja" data-en="Sunday">Nedelja</p>
+                <p><strong>09:00 &#x2013; 22:00</strong></p>
+            </div>
+        </div>
+        <div class="ft-bottom">&copy; 2026 Time Caffe, Jagodina.</div>
+    </div>
+</footer>
+{% endblock %}
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block js %}{% endblock %}
+</body>
+</html>

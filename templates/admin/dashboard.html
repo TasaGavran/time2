@@ -1,0 +1,43 @@
+{% extends "admin/base_admin.html" %}
+{% block admin_title %}Dashboard{% endblock %}
+
+{% block admin_content %}
+<div class="admin-header">
+    <h1>Dashboard</h1>
+    <p style="color:var(--text-3)">Dobrodošli, {{ current_user.username }}</p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card"><div class="stat-value">{{ today_reservations }}</div><div class="stat-label">Danas</div></div>
+    <div class="stat-card"><div class="stat-value">{{ new_reservations }}</div><div class="stat-label">Čeka potvrdu</div></div>
+    <div class="stat-card"><div class="stat-value">{{ total_reservations }}</div><div class="stat-label">Ukupno</div></div>
+    <div class="stat-card"><div class="stat-value">{{ menu_count }}</div><div class="stat-label">Stavki na meniju</div></div>
+</div>
+
+<div class="admin-table-card">
+    <div class="card-header">
+        <h3>Poslednje rezervacije</h3>
+        <a href="{{ url_for('admin_reservations') }}" class="btn btn-sm btn-gold">Sve</a>
+    </div>
+    <table class="admin-table">
+        <thead><tr><th>Gost</th><th>Datum</th><th>Vreme</th><th>Gostiju</th><th>Status</th></tr></thead>
+        <tbody>
+            {% for res in recent %}
+            <tr>
+                <td><strong>{{ res.guest_name }}</strong></td>
+                <td>{{ res.date }}</td>
+                <td>{{ res.time }}</td>
+                <td>{{ res.guests }}</td>
+                <td>
+                    {% if res.status == 'nova' %}<span class="badge badge-nova">Nova</span>
+                    {% elif res.status == 'potvrđena' %}<span class="badge badge-potvrdjena">Potvrđena</span>
+                    {% else %}<span class="badge badge-otkazana">Otkazana</span>{% endif %}
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="5" style="text-align:center;color:var(--text-3);padding:40px">Nema rezervacija.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

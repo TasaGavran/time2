@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Rezervacija &#x2013; Time Caffe{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <h1 data-sr="Rezervacija" data-en="Reservation">Rezervacija</h1>
+</section>
+
+<section class="sc">
+    <div class="container">
+        <div class="sc-head centered">
+            <p data-sr="Rezervi&#x161;ite sto i u&#x17E;ivajte u savr&#x161;enom ambijentu" data-en="Reserve a table and enjoy the perfect ambiance" style="color:var(--text-2)">Rezervi&#x161;ite sto i u&#x17E;ivajte u savr&#x161;enom ambijentu</p>
+        </div>
+        <div class="form-wrap reveal">
+            <form id="reservation-form">
+                <div class="fg">
+                    <label data-sr="Ime i prezime" data-en="Full Name">Ime i prezime</label>
+                    <input type="text" name="guest_name" class="fc" data-sr-placeholder="Va&#x161;e ime i prezime" data-en-placeholder="Your full name" placeholder="Va&#x161;e ime i prezime" required>
+                </div>
+                <div class="fg-row">
+                    <div class="fg">
+                        <label data-sr="Telefon" data-en="Phone">Telefon</label>
+                        <input type="tel" name="phone" class="fc" placeholder="+381 6x xxx xxxx" required>
+                    </div>
+                    <div class="fg">
+                        <label>Email</label>
+                        <input type="email" name="email" class="fc" placeholder="email@example.com">
+                    </div>
+                </div>
+                <div class="fg-row">
+                    <div class="fg">
+                        <label data-sr="Datum" data-en="Date">Datum</label>
+                        <input type="date" name="date" class="fc" required>
+                    </div>
+                    <div class="fg">
+                        <label data-sr="Vreme" data-en="Time">Vreme</label>
+                        <input type="time" name="time" class="fc" required>
+                    </div>
+                </div>
+                <div class="fg">
+                    <label data-sr="Broj gostiju" data-en="Number of Guests">Broj gostiju</label>
+                    <select name="guests" class="fc" required>
+                        {% for i in range(1, 21) %}<option value="{{ i }}">{{ i }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="fg">
+                    <label data-sr="Napomena" data-en="Note">Napomena</label>
+                    <textarea name="note" class="fc" data-sr-placeholder="Posebni zahtevi..." data-en-placeholder="Special requests..." placeholder="Posebni zahtevi..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-gold" style="width:100%" data-sr="Po&#x161;aljite rezervaciju" data-en="Send Reservation">Po&#x161;aljite rezervaciju</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

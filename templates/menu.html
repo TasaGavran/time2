@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Meni &#x2013; Time Caffe{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <h1 data-sr="Na&#x161; Meni" data-en="Our Menu">Na&#x161; Meni</h1>
+</section>
+
+<section class="sc">
+    <div class="container">
+        {% if categories %}
+        <div class="menu-tabs reveal">
+            {% for cat in categories %}
+            <button class="menu-tab {% if loop.first %}active{% endif %}" data-cat="c{{ cat.id }}">{{ cat.name }}</button>
+            {% endfor %}
+        </div>
+        {% for cat in categories %}
+        <div class="menu-cat {% if loop.first %}active{% endif %}" data-cat="c{{ cat.id }}">
+            <div class="menu-card">
+                {% for item in cat.items %}
+                    {% if item.available %}
+                    <div class="menu-row">
+                        <div class="menu-row-info">
+                            <div class="menu-row-name">{{ item.name }}</div>
+                            {% if item.description %}<div class="menu-row-desc">{{ item.description }}</div>{% endif %}
+                        </div>
+                        <div class="menu-row-price">{{ item.price|int }} RSD</div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="menu-card" style="text-align:center;padding:60px">
+            <p style="color:var(--text-3)">Meni se uskoro a&#x17E;urira.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="cta-strip">
+    <div class="container">
+        <h2 data-sr="Rezervi&#x161;ite sto" data-en="Reserve a Table">Rezervi&#x161;ite sto</h2>
+        <p data-sr="Osigurajte svoje mesto" data-en="Secure your spot">Osigurajte svoje mesto</p>
+        <a href="{{ url_for('reservation') }}" class="btn btn-gold" data-sr="Rezervi&#x161;ite odmah" data-en="Reserve Now">Rezervi&#x161;ite odmah</a>
+    </div>
+</section>
+{% endblock %}

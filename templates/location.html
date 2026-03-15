@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Lokacija &#x2013; Time Caffe{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <h1 data-sr="Lokacija" data-en="Location">Lokacija</h1>
+</section>
+
+<section class="sc">
+    <div class="container">
+        <div class="sc-head centered">
+            <p data-sr="Prona&#x111;ite nas u Jagodini" data-en="Find us in Jagodina" style="color:var(--text-2)">Prona&#x111;ite nas u Jagodini</p>
+        </div>
+        <div class="map-frame reveal">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d723.1!2d21.2626505!3d43.9766719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4756c4143ea59c9f%3A0x4f3c95683f6940db!2sTime%20Caffe!5e0!3m2!1ssr!2srs!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Time Caffe Jagodina"></iframe>
+        </div>
+        <div class="loc-grid">
+            <div class="loc-item reveal">
+                <div class="ic"><i class="fas fa-map-marker-alt"></i></div>
+                <h4 data-sr="Adresa" data-en="Address">Adresa</h4>
+                <p>Jagodina, Srbija</p>
+            </div>
+            <div class="loc-item reveal">
+                <div class="ic"><i class="fas fa-car"></i></div>
+                <h4>Parking</h4>
+                <p data-sr="Besplatan parking u neposrednoj blizini." data-en="Free parking nearby.">Besplatan parking u neposrednoj blizini.</p>
+            </div>
+            <div class="loc-item reveal">
+                <div class="ic"><i class="fas fa-clock"></i></div>
+                <h4 data-sr="Radno vreme" data-en="Hours">Radno vreme</h4>
+                <p>Pon &#x2013; &#x10C;et: 08:00 &#x2013; 23:00<br>Pet &#x2013; Sub: 08:00 &#x2013; 01:00<br>Ned: 09:00 &#x2013; 22:00</p>
+            </div>
+            <div class="loc-item reveal">
+                <div class="ic"><i class="fas fa-phone"></i></div>
+                <h4 data-sr="Kontakt" data-en="Contact">Kontakt</h4>
+                <p data-sr="Pozovite nas za informacije." data-en="Call us for info.">Pozovite nas za informacije.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-strip">
+    <div class="container">
+        <h2 data-sr="Vidimo se uskoro" data-en="See You Soon">Vidimo se uskoro</h2>
+        <p data-sr="Rezervi&#x161;ite sto i u&#x17E;ivajte" data-en="Reserve a table and enjoy">Rezervi&#x161;ite sto i u&#x17E;ivajte</p>
+        <a href="{{ url_for('reservation') }}" class="btn btn-gold" data-sr="Rezervi&#x161;ite sto" data-en="Reserve a Table">Rezervi&#x161;ite sto</a>
+    </div>
+</section>
+{% endblock %}

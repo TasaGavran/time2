@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Time Caffe{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1920&q=80')"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-body">
+        <p class="eyebrow" data-sr="Dobro&#x161;li" data-en="Welcome">Dobro&#x161;li</p>
+        <h1>Time Caffe</h1>
+        <p data-sr="Savr&#x161;ena kafa, opu&#x161;tena atmosfera i nezaboravni trenuci u srcu Jagodine" data-en="Perfect coffee, relaxed atmosphere and unforgettable moments in the heart of Jagodina">Savr&#x161;ena kafa, opu&#x161;tena atmosfera i nezaboravni trenuci u srcu Jagodine</p>
+        <div class="btn-row">
+            <a href="{{ url_for('reservation') }}" class="btn btn-gold" data-sr="Rezervi&#x161;ite sto" data-en="Reserve a Table">Rezervi&#x161;ite sto</a>
+            <a href="{{ url_for('menu') }}" class="btn btn-ghost" data-sr="Pogledajte meni" data-en="View Menu">Pogledajte meni</a>
+        </div>
+    </div>
+</section>
+
+<section class="sc">
+    <div class="container">
+        <div class="split">
+            <div class="split-img reveal">
+                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80" alt="Time Caffe" onerror="this.src='https://placehold.co/800x450/171412/c9a96e?text=Time+Caffe'">
+            </div>
+            <div class="split-text reveal">
+                <p class="eyebrow" style="font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px" data-sr="O nama" data-en="About Us">O nama</p>
+                <h2 data-sr="Na&#x161;a pri&#x10D;a" data-en="Our Story">Na&#x161;a pri&#x10D;a</h2>
+                <p data-sr="Time Caffe je nastao iz ljubavi prema savr&#x161;enoj &#x161;oljici kafe i &#x17E;elje da stvorimo prostor gde se vreme zaustavlja." data-en="Time Caffe was born from a love of the perfect cup of coffee and a desire to create a space where time stands still.">Time Caffe je nastao iz ljubavi prema savr&#x161;enoj &#x161;oljici kafe i &#x17E;elje da stvorimo prostor gde se vreme zaustavlja.</p>
+                <p data-sr="Od jutarnjeg espressa do ve&#x10D;ernjih koktela &#x2013; svaki trenutak proveden kod nas je trenutak za pam&#x107;enje." data-en="From morning espresso to evening cocktails &#x2013; every moment spent with us is a moment to remember.">Od jutarnjeg espressa do ve&#x10D;ernjih koktela &#x2013; svaki trenutak proveden kod nas je trenutak za pam&#x107;enje.</p>
+                <a href="{{ url_for('about') }}" class="btn btn-gold" style="margin-top:12px" data-sr="Saznajte vi&#x161;e" data-en="Learn More">Saznajte vi&#x161;e</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="sc sc-raised">
+    <div class="container">
+        <div class="sc-head centered">
+            <p class="eyebrow" data-sr="Meni" data-en="Menu">Meni</p>
+            <h2 data-sr="Iz na&#x161;eg menija" data-en="From Our Menu">Iz na&#x161;eg menija</h2>
+            <p data-sr="Ono &#x161;to na&#x161;i gosti najvi&#x161;e vole" data-en="What our guests love the most">Ono &#x161;to na&#x161;i gosti najvi&#x161;e vole</p>
+        </div>
+        <div class="cards">
+            {% if highlights %}
+                {% for item in highlights %}
+                <div class="crd reveal">
+                    <span class="crd-icon">&#x2615;</span>
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.description }}</p>
+                    <div class="price">{{ item.price|int }} RSD</div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="crd reveal"><span class="crd-icon">&#x2615;</span><h3>Cappuccino</h3><p>Espresso sa kremastom penom</p><div class="price">250 RSD</div></div>
+                <div class="crd reveal"><span class="crd-icon">&#x1F379;</span><h3>Mojito</h3><p>Rum, limeta, menta</p><div class="price">550 RSD</div></div>
+                <div class="crd reveal"><span class="crd-icon">&#x1F370;</span><h3>Tiramisu</h3><p>Italijanski tiramisu</p><div class="price">420 RSD</div></div>
+            {% endif %}
+        </div>
+        <div style="text-align:center;margin-top:48px" class="reveal">
+            <a href="{{ url_for('menu') }}" class="btn btn-gold" data-sr="Pogledajte ceo meni" data-en="View Full Menu">Pogledajte ceo meni</a>
+        </div>
+    </div>
+</section>
+
+<section class="sc">
+    <div class="container">
+        <div class="sc-head centered">
+            <p class="eyebrow" data-sr="Galerija" data-en="Gallery">Galerija</p>
+            <h2 data-sr="Zavirite u na&#x161; prostor" data-en="Take a Peek Inside">Zavirite u na&#x161; prostor</h2>
+        </div>
+        <div class="img-grid">
+            <div class="img-grid-item reveal"><img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=600&q=80" alt="1"></div>
+            <div class="img-grid-item reveal"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80" alt="2"></div>
+            <div class="img-grid-item reveal"><img src="https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=600&q=80" alt="3"></div>
+            <div class="img-grid-item reveal"><img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=600&q=80" alt="4"></div>
+            <div class="img-grid-item reveal"><img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80" alt="5"></div>
+            <div class="img-grid-item reveal"><img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600&q=80" alt="6"></div>
+        </div>
+    </div>
+</section>
+
+<section class="sc sc-raised">
+    <div class="container">
+        <div class="sc-head centered">
+            <p class="eyebrow" data-sr="Recenzije" data-en="Reviews">Recenzije</p>
+            <h2 data-sr="&#x160;ta ka&#x17E;u na&#x161;i gosti" data-en="What Our Guests Say">&#x160;ta ka&#x17E;u na&#x161;i gosti</h2>
+        </div>
+        <div class="quotes">
+            <div class="quote-item active">
+                <blockquote data-sr="Najbolja kafa u Jagodini. Ambijent je savr&#x161;en za rad ili opu&#x161;tanje sa prijateljima." data-en="The best coffee in Jagodina. The ambiance is perfect for work or relaxing with friends.">Najbolja kafa u Jagodini. Ambijent je savr&#x161;en za rad ili opu&#x161;tanje sa prijateljima.</blockquote>
+                <cite>&#x2014; Marko P.</cite>
+            </div>
+            <div class="quote-item">
+                <blockquote data-sr="Kokteli su fantasti&#x10D;ni, a osoblje uvek ljubazno. Na&#x161;e omiljeno mesto." data-en="The cocktails are fantastic, and the staff is always friendly. Our favorite spot.">Kokteli su fantasti&#x10D;ni, a osoblje uvek ljubazno. Na&#x161;e omiljeno mesto.</blockquote>
+                <cite>&#x2014; Ana S.</cite>
+            </div>
+            <div class="quote-item">
+                <blockquote data-sr="Tiramisu je bo&#x17E;anstven! Svaki put se osetim kao kod ku&#x107;e." data-en="The tiramisu is divine! Every time I feel right at home.">Tiramisu je bo&#x17E;anstven! Svaki put se osetim kao kod ku&#x107;e.</blockquote>
+                <cite>&#x2014; Stefan M.</cite>
+            </div>
+            <div class="dots"><button class="active"></button><button></button><button></button></div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-strip">
+    <div class="container">
+        <h2 data-sr="Posetite nas" data-en="Visit Us">Posetite nas</h2>
+        <p data-sr="Rezervi&#x161;ite sto i u&#x17E;ivajte u savr&#x161;enom iskustvu" data-en="Reserve a table and enjoy the perfect experience">Rezervi&#x161;ite sto i u&#x17E;ivajte u savr&#x161;enom iskustvu</p>
+        <a href="{{ url_for('reservation') }}" class="btn btn-gold" data-sr="Rezervi&#x161;ite odmah" data-en="Reserve Now">Rezervi&#x161;ite odmah</a>
+    </div>
+</section>
+{% endblock %}

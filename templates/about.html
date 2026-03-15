@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}O nama &#x2013; Time Caffe{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <h1 data-sr="O nama" data-en="About Us">O nama</h1>
+</section>
+
+<section class="sc">
+    <div class="container">
+        <div class="sc-head centered">
+            <p class="eyebrow" data-sr="Na&#x161;a pri&#x10D;a" data-en="Our Story">Na&#x161;a pri&#x10D;a</p>
+            <h2 data-sr="Od male ideje do omiljenog mesta u Jagodini" data-en="From a Small Idea to Jagodina&#x27;s Favorite Spot">Od male ideje do omiljenog mesta u Jagodini</h2>
+        </div>
+        <div class="story">
+            <div class="story-row reveal">
+                <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&q=80" alt="Pocetak">
+                <div>
+                    <h3 data-sr="Kako je sve po&#x10D;elo" data-en="How It All Started">Kako je sve po&#x10D;elo</h3>
+                    <p data-sr="Time Caffe je nastao iz jednostavne ideje &#x2013; stvoriti mesto gde se ljudi ose&#x107;aju kao kod ku&#x107;e, uz savr&#x161;enu &#x161;oljicu kafe." data-en="Time Caffe was born from a simple idea &#x2013; to create a place where people feel at home, with the perfect cup of coffee.">Time Caffe je nastao iz jednostavne ideje &#x2013; stvoriti mesto gde se ljudi ose&#x107;aju kao kod ku&#x107;e, uz savr&#x161;enu &#x161;oljicu kafe.</p>
+                </div>
+            </div>
+            <div class="story-row reveal">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80" alt="Misija">
+                <div>
+                    <h3 data-sr="Na&#x161;a misija" data-en="Our Mission">Na&#x161;a misija</h3>
+                    <p data-sr="Verujemo da svaka &#x161;oljica kafe ima svoju pri&#x10D;u. Pru&#x17E;amo vrhunski kvalitet u svakom napitku, toplinu u svakom susretu i prostor koji inspiri&#x161;e." data-en="We believe every cup of coffee has its own story. We deliver top quality in every drink, warmth in every encounter, and a space that inspires.">Verujemo da svaka &#x161;oljica kafe ima svoju pri&#x10D;u. Pru&#x17E;amo vrhunski kvalitet u svakom napitku, toplinu u svakom susretu i prostor koji inspiri&#x161;e.</p>
+                </div>
+            </div>
+            <div class="story-row reveal">
+                <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=600&q=80" alt="Vrednosti">
+                <div>
+                    <h3 data-sr="Na&#x161;e vrednosti" data-en="Our Values">Na&#x161;e vrednosti</h3>
+                    <p data-sr="Kvalitet &#x2013; pa&#x17E;ljivo odabrana zrna i najbolji sastojci. Atmosfera &#x2013; topao, elegantan prostor. Zajednica &#x2013; mesto gde se prave uspomene." data-en="Quality &#x2013; carefully selected beans and the finest ingredients. Atmosphere &#x2013; a warm, elegant space. Community &#x2013; a place where memories are made.">Kvalitet &#x2013; pa&#x17E;ljivo odabrana zrna i najbolji sastojci. Atmosfera &#x2013; topao, elegantan prostor. Zajednica &#x2013; mesto gde se prave uspomene.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="sc sc-raised">
+    <div class="container">
+        <div class="sc-head centered">
+            <p class="eyebrow" data-sr="Tim" data-en="Team">Tim</p>
+            <h2 data-sr="Na&#x161; tim" data-en="Our Team">Na&#x161; tim</h2>
+            <p data-sr="Ljudi koji &#x10D;ine Time Caffe posebnim" data-en="The people who make Time Caffe special">Ljudi koji &#x10D;ine Time Caffe posebnim</p>
+        </div>
+        <div class="team">
+            <div class="team-item reveal"><div class="avi"><i class="fas fa-user"></i></div><h4>Nikola Jovanovi&#x107;</h4><p data-sr="Osniva&#x10D; &amp; Menad&#x17E;er" data-en="Founder &amp; Manager">Osniva&#x10D; &amp; Menad&#x17E;er</p></div>
+            <div class="team-item reveal"><div class="avi"><i class="fas fa-user"></i></div><h4>Milica Petrovi&#x107;</h4><p data-sr="Glavni barista" data-en="Head Barista">Glavni barista</p></div>
+            <div class="team-item reveal"><div class="avi"><i class="fas fa-user"></i></div><h4>Du&#x161;an Markovi&#x107;</h4><p data-sr="Koktelmajstor" data-en="Mixologist">Koktelmajstor</p></div>
+            <div class="team-item reveal"><div class="avi"><i class="fas fa-user"></i></div><h4>Ivana &#x110;or&#x111;evi&#x107;</h4><p data-sr="Poslasti&#x10D;ar" data-en="Pastry Chef">Poslasti&#x10D;ar</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-strip">
+    <div class="container">
+        <h2 data-sr="Do&#x111;ite i upoznajte nas" data-en="Come and Meet Us">Do&#x111;ite i upoznajte nas</h2>
+        <p data-sr="Svaki gost je deo na&#x161;e pri&#x10D;e" data-en="Every guest is part of our story">Svaki gost je deo na&#x161;e pri&#x10D;e</p>
+        <a href="{{ url_for('reservation') }}" class="btn btn-gold" data-sr="Rezervi&#x161;ite sto" data-en="Reserve a Table">Rezervi&#x161;ite sto</a>
+    </div>
+</section>
+{% endblock %}

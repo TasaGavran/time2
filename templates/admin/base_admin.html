@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block admin_title %}Admin{% endblock %} – Time Caffe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-brand">Time <span>Caffe</span></div>
+            <ul class="admin-nav">
+                <li><a href="{{ url_for('admin_dashboard') }}" class="{% if request.endpoint == 'admin_dashboard' %}active{% endif %}"><span class="nav-icon"><i class="fas fa-th-large"></i></span> Dashboard</a></li>
+                <li><a href="{{ url_for('admin_menu') }}" class="{% if request.endpoint == 'admin_menu' %}active{% endif %}"><span class="nav-icon"><i class="fas fa-utensils"></i></span> Meni</a></li>
+                <li><a href="{{ url_for('admin_reservations') }}" class="{% if request.endpoint == 'admin_reservations' %}active{% endif %}"><span class="nav-icon"><i class="fas fa-calendar-check"></i></span> Rezervacije</a></li>
+                <li style="margin-top:auto;border-top:1px solid var(--border);padding-top:8px"><a href="{{ url_for('index') }}"><span class="nav-icon"><i class="fas fa-globe"></i></span> Sajt</a></li>
+                <li><a href="{{ url_for('admin_logout') }}"><span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span> Odjavi se</a></li>
+            </ul>
+        </aside>
+        <main class="admin-main">{% block admin_content %}{% endblock %}</main>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block admin_js %}{% endblock %}
+</body>
+</html>

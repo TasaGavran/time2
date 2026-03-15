@@ -1,0 +1,24 @@
+Kako da slike budu oštrije i boljeg kvaliteta
+=============================================
+
+1. KORISTITE ORIGINALNE FOTOGRAFIJE U VISOKOJ REZOLUCIJI
+   - Hero (pozadina): najmanje 1600×900 px, idealno 1920×1080 ili više.
+   - Sekcija "O nama": najmanje 1200×800 px.
+   - Galerija: najmanje 800×600 px po slici, bolje 1200×800 px.
+   - Format: JPG za fotografije (kvalitet 85–90%), PNG ako vam treba providnost.
+
+2. NE POVEĆAVAJTE SLIKE
+   - Ako je slika manja od prikaza u browseru, pregledač je uvećava i izgleda mutno.
+   - Uvek koristite sliku bar malo veću od najvećeg prikaza (npr. za punu širinu 1200 px, slika treba da bude najmanje 1200 px široka).
+
+3. GDE ZAMENITI FAJLOVE
+   - Hero: zamenite sadržaj fajla hero.png u ovom folderu (ili izmenite u styles.css putanju).
+   - O nama: about.png.
+   - Galerija: gallery1.png do gallery6.png.
+   - Imena fajlova moraju ostati ista da bi sajt radio bez izmene koda.
+
+4. OPCIONO – SRCSET ZA BOLJU OŠTRINU NA RETINI
+   - Za naprednu optimizaciju možete dodati više veličina (npr. slika_800.jpg, slika_1600.jpg) i u HTML koristiti atribut srcset da browser učitava veću sliku na uređajima sa visokom rezolucijom. To zahteva izmenu HTML/CSS.
+
+5. KOMPRESIJA
+   - Pre postavljanja smanjite veličinu fajla alatom kao što je TinyPNG ili Squoosh, ali ne smanjujte dimenzije ispod preporučenih (samo smanjite kvalitet/kompresiju u razumnim granicama).
